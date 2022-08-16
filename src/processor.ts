@@ -4,15 +4,15 @@ import { TypeormDatabase } from '@subsquid/typeorm-store';
 import { In } from 'typeorm';
 import handleBalanceChange from './handleBalanceChange';
 import {
-    SubstrateBalanceAccount,
-    SubstrateBalanceChangeEventType,
-    SubstrateNetwork
+  SubstrateBalanceAccount,
+  SubstrateBalanceChangeEventType,
+  SubstrateNetwork
 } from './model';
 import {
-    getBalancesBalanceSetEvent,
-    getBalancesDepositEvent,
-    getBalancesEndowedEvent,
-    getBalancesTransferEvent
+  getBalancesBalanceSetEvent,
+  getBalancesDepositEvent,
+  getBalancesEndowedEvent,
+  getBalancesTransferEvent
 } from './typeGetters/getBalancesEvents';
 import { getTreasuryAwardedEvent } from './typeGetters/getTreasuryEvents';
 import { Context, EventProcessorParams, Models } from './types/custom';
@@ -82,7 +82,8 @@ async function processBatch(ctx: Context): Promise<void> {
     { id: In(models.accounts.map((acc) => acc.id)) }
   );
   await ctx.store.save(mergeAccounts(models.accounts, existingAccounts));
-  await ctx.store.save([...models.transfers, ...models.changeEvents]);
+  await ctx.store.save(models.transfers);
+  await ctx.store.save(models.changeEvents);
 
   ctx.log.info(
     JSON.stringify(
