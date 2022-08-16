@@ -1,0 +1,62 @@
+enum SubstrateNetwork {
+  kusama
+  polkadot
+  phala
+  khala
+  litmus
+  litentry
+}
+
+enum SubstrateBalanceChangeEventType {
+  BalancesBalanceSet
+  BalancesDeposit
+  BalancesEndowed
+  BalancesTransfer
+  TreasuryAwarded
+}
+
+type SubstrateBalanceAccount @entity {
+  "address"
+  id: ID!
+  "hex address"
+  publicKey: String! @index
+  network: SubstrateNetwork!
+  symbol: String!
+  decimals: Int!
+  firstBalanceChangeEventDate: DateTime
+  firstBalanceChangeEventBlockNumber: BigInt
+  lastBalanceChangeEventDate: DateTime
+  lastBalanceChangeEventBlockNumber: BigInt
+  totalBalanceChangeEvents: Int!
+  totalTransfers: Int!
+  balanceChangeEvents: [SubstrateBalanceChangeEvent]
+    @derivedFrom(field: "account")
+  transfersTo: [SubstrateBalanceTransfer] @derivedFrom(field: "to")
+  transfersFrom: [SubstrateBalanceTransfer] @derivedFrom(field: "from")
+}
+
+type SubstrateBalanceChangeEvent @entity {
+  "network:block:index"
+  id: ID!
+  network: SubstrateNetwork!
+  account: SubstrateBalanceAccount!
+  type: SubstrateBalanceChangeEventType! @index
+  symbol: String!
+  decimals: Int!
+  amount: BigInt!
+  blockNumber: BigInt!
+  date: DateTime!
+}
+
+type SubstrateBalanceTransfer @entity {
+  "network:block:index"
+  id: ID!
+  network: SubstrateNetwork!
+  to: SubstrateBalanceAccount!
+  from: SubstrateBalanceAccount!
+  symbol: String!
+  decimals: Int!
+  amount: BigInt!
+  blockNumber: BigInt!
+  date: DateTime!
+}
