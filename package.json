@@ -8,7 +8,9 @@
     "build": "rm -rf lib && tsc",
     "db:migrate": "npx squid-typeorm-migration apply",
     "processor:start": "node lib/processor.js",
-    "query-node:start": "squid-graphql-server"
+    "query-node:start": "squid-graphql-server",
+    "codegen": "sqd codegen",
+    "typegen": "squid-substrate-typegen typegenKusama.json && squid-substrate-typegen typegenPolkadot.json"
   },
   "dependencies": {
     "@polkadot/util-crypto": "^10.1.4",

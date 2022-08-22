@@ -7,5 +7,7 @@
 # IDE files
 /.idea
 
+yarn-error.log
+
 /src/**/model/
 /src/**/types/*/
