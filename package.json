@@ -10,7 +10,8 @@
     "processor:start": "node lib/processor.js",
     "query-node:start": "squid-graphql-server",
     "format": "prettier --write --ignore-unknown .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "make codegen && make typegen"
   },
   "dependencies": {
     "@polkadot/util-crypto": "^10.1.4",
