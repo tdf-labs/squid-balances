@@ -6,3 +6,8 @@
 
 # IDE files
 /.idea
+
+# Generated
+/src/model/
+/src/types/*/
+!/src/types/custom.ts

@@ -7,6 +7,9 @@ FROM node-with-gyp AS builder
 WORKDIR /squid
 ADD package.json .
 ADD package-lock.json .
+ADD schema.graphql .
+ADD Makefile .
+ADD typegen typegen
 RUN npm ci
 ADD tsconfig.json .
 ADD src src
