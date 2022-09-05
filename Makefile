@@ -18,17 +18,17 @@ codegen:
 	@npx squid-typeorm-codegen
 
 typegen-litentry:
-	@npx --yes @subsquid/substrate-typegen typegen-litentry.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-litentry.json
 typegen-litmus:
-	@npx --yes @subsquid/substrate-typegen typegen-litmus.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-litmus.json
 typegen-khala:
-	@npx --yes @subsquid/substrate-typegen typegen-khala.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-khala.json
 typegen-khala:
-	@npx --yes @subsquid/substrate-typegen typegen-khala.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-khala.json
 typegen-kusama:
-	@npx --yes @subsquid/substrate-typegen typegen-kusama.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-kusama.json
 typegen-polkadot:
-	@npx --yes @subsquid/substrate-typegen typegen-polkadot.json
+	@npx --yes @subsquid/substrate-typegen typegen/typegen-polkadot.json
 
 typegen: typegen-litentry typegen-litmus typegen-khala typegen-kusama typegen-polkadot
 

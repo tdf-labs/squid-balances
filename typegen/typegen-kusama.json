@@ -1,7 +1,7 @@
 {
-  "outDir": "./src/types/litmus",
-  "specVersions": "https://litmus.archive.subsquid.io/graphql",
-  "typesBundle": "litmus",
+  "outDir": "../src/types/kusama",
+  "specVersions": "https://kusama.archive.subsquid.io/graphql",
+  "typesBundle": "kusama",
   "events": [
     "Balances.BalanceSet",
     "Balances.Deposit",
