@@ -21,16 +21,22 @@ import {
 } from './typeGetters/getTreasuryEvents';
 import { Context, EventProcessorParams, Models } from './types/custom';
 
-const supportedNetworks = ['kusama', 'polkadot'];
+const supportedNetworks = ['kusama', 'polkadot', 'litentry', 'litmus', 'khala'];
 const network: SubstrateNetwork = process.env.NETWORK as SubstrateNetwork;
 
 if (!supportedNetworks.includes(network)) {
   throw Error('Network not supported');
 }
 
+let typesBundle = network as string;
+
+if (network === 'litentry' || network === 'litmus') {
+  typesBundle = `typegen/${network}-types-bundle.json`;
+}
+
 export const processor = new SubstrateBatchProcessor()
   .setBatchSize(500)
-  .setTypesBundle(network)
+  .setTypesBundle(typesBundle)
   .setDataSource({
     archive: lookupArchive(network as KnownArchives, { release: 'FireSquid' }),
   })

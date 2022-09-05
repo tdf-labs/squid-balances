@@ -23,8 +23,6 @@ typegen-litmus:
 	@npx --yes @subsquid/substrate-typegen typegen/typegen-litmus.json
 typegen-khala:
 	@npx --yes @subsquid/substrate-typegen typegen/typegen-khala.json
-typegen-khala:
-	@npx --yes @subsquid/substrate-typegen typegen/typegen-khala.json
 typegen-kusama:
 	@npx --yes @subsquid/substrate-typegen typegen/typegen-kusama.json
 typegen-polkadot:
