@@ -3,7 +3,7 @@ import {
   BalancesBalanceSetEvent as KusamaBalancesBalanceSetEvent,
   BalancesDepositEvent as KusamaBalancesDepositEvent,
   BalancesEndowedEvent as KusamaBalancesEndowedEvent,
-  BalancesTransferEvent as KusamaBalancesTransferEvent
+  BalancesTransferEvent as KusamaBalancesTransferEvent,
 } from '../types/kusama/events';
 // it feels a bit wrong using kusama types on all the getters but ChainContext and Event are generic
 import { ChainContext, Event } from '../types/kusama/support';
@@ -11,7 +11,7 @@ import {
   BalancesBalanceSetEvent as PolkadotBalancesBalanceSetEvent,
   BalancesDepositEvent as PolkadotBalancesDepositEvent,
   BalancesEndowedEvent as PolkadotBalancesEndowedEvent,
-  BalancesTransferEvent as PolkadotBalancesTransferEvent
+  BalancesTransferEvent as PolkadotBalancesTransferEvent,
 } from '../types/polkadot/events';
 
 // import {

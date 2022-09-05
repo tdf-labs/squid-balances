@@ -1,3 +1,4 @@
+import { decodeAddress } from '@polkadot/util-crypto';
 import { KnownArchives, lookupArchive } from '@subsquid/archive-registry';
 import { SubstrateBatchProcessor } from '@subsquid/substrate-processor';
 import { TypeormDatabase } from '@subsquid/typeorm-store';
@@ -6,15 +7,18 @@ import handleBalanceChange from './handleBalanceChange';
 import {
   SubstrateBalanceAccount,
   SubstrateBalanceChangeEventType,
-  SubstrateNetwork
+  SubstrateNetwork,
 } from './model';
 import {
   getBalancesBalanceSetEvent,
   getBalancesDepositEvent,
   getBalancesEndowedEvent,
-  getBalancesTransferEvent
+  getBalancesTransferEvent,
 } from './typeGetters/getBalancesEvents';
-import { getTreasuryAwardedEvent } from './typeGetters/getTreasuryEvents';
+import {
+  getTreasuryAwardedEvent,
+  getTreasuryDepositEvent,
+} from './typeGetters/getTreasuryEvents';
 import { Context, EventProcessorParams, Models } from './types/custom';
 
 const supportedNetworks = ['kusama', 'polkadot'];
@@ -44,6 +48,9 @@ export const processor = new SubstrateBatchProcessor()
   } as const)
   .addEvent('Treasury.Awarded', {
     data: { event: { args: true } },
+  } as const)
+  .addEvent('Treasury.Deposit', {
+    data: { event: true },
   } as const);
 
 // doing .run above breaks the types... bit odd
@@ -183,6 +190,28 @@ async function processEvent(params: EventProcessorParams) {
         eventParams: {
           amount: award,
           account,
+        },
+      });
+      break;
+    }
+
+    case 'Treasury.Deposit': {
+      const { amount } = getTreasuryDepositEvent(
+        params.ctx,
+        params.item.event,
+        network
+      );
+
+      const publicKey = params.item.event.extrinsic?.signature?.address.value;
+
+      if (!publicKey) return;
+
+      handleBalanceChange({
+        eventType: SubstrateBalanceChangeEventType.TreasuryDeposit,
+        processorParams: params,
+        eventParams: {
+          amount: -amount,
+          account: decodeAddress(publicKey),
         },
       });
       break;

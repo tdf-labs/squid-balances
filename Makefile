@@ -17,11 +17,14 @@ migrate:
 codegen:
 	@npx squid-typeorm-codegen
 
+typegen-khala:
+	@npx --yes @subsquid/substrate-typegen typegenKhala.json
+typegen-kusama:
+	@npx --yes @subsquid/substrate-typegen typegenKusama.json
+typegen-polkadot:
+	@npx --yes @subsquid/substrate-typegen typegenPolkadot.json
 
-typegenKusama:
-	@npx squid-substrate-typegen typegenKusama.json
-typegenPolkadot:
-	@npx squid-substrate-typegen typegenPolkadot.json
+typegen: typegen-kusama typegen-polkadot
 
 
 up:
