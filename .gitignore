@@ -7,5 +7,7 @@
 # IDE files
 /.idea
 
-# /src/**/model/
-# /src/**/types/*/
+# Generated
+/src/model/
+/src/types/*/
+!/src/types/custom.ts
