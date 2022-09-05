@@ -1,0 +1,13 @@
+{
+  "outDir": "./src/types/litmus",
+  "specVersions": "https://litmus.archive.subsquid.io/graphql",
+  "typesBundle": "litmus",
+  "events": [
+    "Balances.BalanceSet",
+    "Balances.Deposit",
+    "Balances.Endowed",
+    "Balances.Transfer",
+    "Treasury.Awarded",
+    "Treasury.Deposit"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "outDir": "./src/types/litentry",
+  "specVersions": "https://litentry.archive.subsquid.io/graphql",
+  "typesBundle": "litentry",
+  "events": [
+    "Balances.BalanceSet",
+    "Balances.Deposit",
+    "Balances.Endowed",
+    "Balances.Transfer",
+    "Treasury.Awarded",
+    "Treasury.Deposit"
+  ]
+}
