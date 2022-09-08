@@ -13,9 +13,8 @@ serve:
 migrate:
 	@npx squid-typeorm-migration apply
 
-
 codegen:
-	@npx squid-typeorm-codegen
+	@npx --yes @subsquid/typeorm-codegen
 
 typegen-litentry:
 	@npx --yes @subsquid/substrate-typegen typegen/typegen-litentry.json
