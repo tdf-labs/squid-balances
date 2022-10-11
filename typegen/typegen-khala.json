@@ -1,0 +1,13 @@
+{
+  "outDir": "../src/types/khala",
+  "specVersions": "https://khala.archive.subsquid.io/graphql",
+  "typesBundle": "khala",
+  "events": [
+    "Balances.BalanceSet",
+    "Balances.Deposit",
+    "Balances.Endowed",
+    "Balances.Transfer",
+    "Treasury.Awarded",
+    "Treasury.Deposit"
+  ]
+}
