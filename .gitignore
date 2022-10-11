@@ -7,7 +7,9 @@
 # IDE files
 /.idea
 
+yarn-error.log
+
 # Generated
-/src/model/
-/src/types/*/
+/src/**/model/
+/src/**/types/*/
 !/src/types/custom.ts

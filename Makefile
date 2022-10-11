@@ -29,13 +29,13 @@ typegen-polkadot:
 
 typegen: typegen-litentry typegen-litmus typegen-khala typegen-kusama typegen-polkadot
 
-
 up:
 	@docker-compose up -d
-
 
 down:
 	@docker-compose down
 
+deploy: codegen typegen-$(network)
+	@API_DEBUG=true npx sqd squid update balances-$(network)@$(version) -v -e NETWORK=$(network)
 
 .PHONY: build serve process migrate codegen typegen up down

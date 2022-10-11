@@ -1,14 +1,14 @@
 import {
   BatchContext,
   BatchProcessorEventItem,
-  BatchProcessorItem,
+  BatchProcessorItem
 } from '@subsquid/substrate-processor';
 import { Store } from '@subsquid/typeorm-store';
 import {
   SubstrateBalanceAccount,
   SubstrateBalanceChangeEvent,
   SubstrateBalanceTransfer,
-  SubstrateNetwork,
+  SubstrateNetwork
 } from '../model';
 
 // this makes things circular...
